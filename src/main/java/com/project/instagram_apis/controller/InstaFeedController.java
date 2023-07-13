@@ -1,8 +1,12 @@
 package com.project.instagram_apis.controller;
 
+
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -26,6 +30,18 @@ public class InstaFeedController {
 
         return instaFeedServiceInterface.getFeed();
     }
-
+    
+    /**
+     * PutMapping 
+     *     When we update more one column of same row into the database
+     * then we use putMapping.
+     * @param instaFeed
+     * @return
+     */
+    @PutMapping("/updateFeed")
+    public Object updateFeed(@RequestBody InstaFeed instaFeed)
+    {
+        return instaFeedServiceInterface.updateFeed(instaFeed);
+    }
 
 }
