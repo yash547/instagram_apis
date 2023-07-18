@@ -28,5 +28,10 @@ public class RegistrationController {
  {
    return this.registrationServiceInterface.getLogin(email_id, password);
  }
+ /**
+  *   Create a put  api to update the emaild ,full name , mobileno 
+  by id 
+  *
+  */
 
 }
