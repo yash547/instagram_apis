@@ -49,7 +49,21 @@ public class InstaFeedServiceLayer implements InstaFeedServiceInterface {
 
         InstaFeed p = optionalInsta.get();
 
-        return p;
+        /**
+         * Here p.setDescription() and p.setLocation()
+         * method are used to override the data from the 
+         * instafeed.getDescription() and instafeed.getLocation()
+         * and then the InstaFeed class object which is p (object)
+         * 
+         * will passed to .save() method as a argument of p object from 
+         * InstaFeed class. 
+         * 
+         */
+        p.setDescription(instaFeed.getDescription()); 
+        p.setLocation(instaFeed.getLocation());
+
+       return  instaFeedRepository.save(p);
+ 
 
     }
 
