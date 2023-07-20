@@ -1,5 +1,7 @@
 package com.project.instagram_apis.serviceLayer;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -36,5 +38,26 @@ private RegistrationRepository registrationRepository; //  here the object will 
          */
         return this.registrationRepository.fetchLogin(email_id, password);
     }
+
+    @Override
+    public Object updateRegistrationData(Registration registration) {
+      
+        Optional<Registration> optionalReg = registrationRepository.findById(registration.getId());
+
+        if(!optionalReg.isPresent())
+        {
+            return "No record found";
+        }
+
+        Registration p = optionalReg.get();
+
+        p.setEmail_id(registration.getEmail_id());
+        p.setFull_name(registration.getFull_name());
+        p.setMobile_no(registration.getMobile_no());
+
+        return registrationRepository.save(p);
+    }
+
+    
     
 }
