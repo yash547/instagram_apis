@@ -8,4 +8,6 @@ public interface RegistrationServiceInterface {
 
  public Object getLogin(String email_id,String password);
 
+ public Object updateRegistrationData(Registration registration);
+
 }
