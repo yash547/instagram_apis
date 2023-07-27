@@ -39,6 +39,11 @@ private RegistrationRepository registrationRepository; //  here the object will 
         return this.registrationRepository.fetchLogin(email_id, password);
     }
 
+    /**
+     * This method body is for changing or updation of email id, mobile no, full name
+     * 
+     */
+
     @Override
     public Object updateRegistrationData(Registration registration) {
       
@@ -56,6 +61,26 @@ private RegistrationRepository registrationRepository; //  here the object will 
         p.setMobile_no(registration.getMobile_no());
 
         return registrationRepository.save(p);
+    }
+
+    /**
+     * This method body is for forgot password
+     * 
+     */
+    @Override
+    public Object forgotPassword(Registration registration) {
+        Optional<Registration> forgotPass = registrationRepository.findById(registration.getId());
+
+        if(!forgotPass.isPresent())
+        {
+            return "No record found";
+        }
+
+        Registration f = forgotPass.get();
+
+        f.setPassword(registration.getPassword());
+
+        return registrationRepository.save(f);
     }
 
     
