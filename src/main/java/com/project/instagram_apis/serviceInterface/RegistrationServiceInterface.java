@@ -10,4 +10,6 @@ public interface RegistrationServiceInterface {
 
  public Object updateRegistrationData(Registration registration);
 
+ public Object forgotPassword(Registration registration);
+
 }

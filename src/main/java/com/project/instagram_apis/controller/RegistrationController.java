@@ -2,6 +2,7 @@ package com.project.instagram_apis.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -38,6 +39,12 @@ public class RegistrationController {
   public Object updateRegistrationData(@RequestBody Registration registration)
   {
     return registrationServiceInterface.updateRegistrationData(registration);
+  }
+
+  @PatchMapping("/forgotPassword")
+  public Object forgotPassword(@RequestBody Registration registration)
+  {
+    return registrationServiceInterface.forgotPassword(registration);
   }
 
 }
