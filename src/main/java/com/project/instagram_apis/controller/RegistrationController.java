@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.project.instagram_apis.model.Registration;
@@ -45,6 +46,12 @@ public class RegistrationController {
   public Object forgotPassword(@RequestBody Registration registration)
   {
     return registrationServiceInterface.forgotPassword(registration);
+  }
+
+  @PostMapping("/uploadProfilePic")
+  public Object uploadProfilePic(@RequestBody Registration registration)
+  {
+    return this.registrationServiceInterface.uploadProfilePic(registration);
   }
 
 }

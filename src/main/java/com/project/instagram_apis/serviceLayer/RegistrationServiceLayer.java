@@ -83,6 +83,10 @@ private RegistrationRepository registrationRepository; //  here the object will 
         return registrationRepository.save(f);
     }
 
-    
+    @Override
+    public Object uploadProfilePic(Registration registration) {
+        
+        return registrationRepository.save(registration);
+    }
     
 }

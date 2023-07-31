@@ -12,4 +12,6 @@ public interface RegistrationServiceInterface {
 
  public Object forgotPassword(Registration registration);
 
+ public Object uploadProfilePic(Registration registration);
+
 }
