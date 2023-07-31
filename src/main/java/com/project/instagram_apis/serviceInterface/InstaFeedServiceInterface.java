@@ -17,4 +17,7 @@ public interface InstaFeedServiceInterface {
     * @return
     */
    public Object updateFeed(InstaFeed instaFeed);
+
+   public Object getFeedByUserId(InstaFeed instaFeed);
+   
 }
