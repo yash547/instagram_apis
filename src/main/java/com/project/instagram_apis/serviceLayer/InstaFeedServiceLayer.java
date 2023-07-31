@@ -67,4 +67,10 @@ public class InstaFeedServiceLayer implements InstaFeedServiceInterface {
 
     }
 
+    @Override
+    public Object getFeedByUserId(InstaFeed instaFeed) {
+        
+        return this.instaFeedRepository.fetchInstaFeedByUserId(instaFeed.getUserId());
+    }
+
 }

@@ -46,4 +46,14 @@ public class InstaFeedController {
         return instaFeedServiceInterface.updateFeed(instaFeed);
     }
 
+    
+    @GetMapping("/getFeedByUserId")
+    public Object getFeedByUserId(@RequestBody InstaFeed instaFeed) {
+
+        return this.instaFeedServiceInterface.getFeedByUserId(instaFeed);
+
+    }
+
+
+
 }

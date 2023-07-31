@@ -47,4 +47,6 @@ public class RegistrationController {
     return registrationServiceInterface.forgotPassword(registration);
   }
 
+  
+
 }
