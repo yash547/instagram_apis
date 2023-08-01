@@ -48,10 +48,6 @@ public class RegistrationController {
     return registrationServiceInterface.forgotPassword(registration);
   }
 
-  @PostMapping("/uploadProfilePic")
-  public Object uploadProfilePic(@RequestBody Registration registration)
-  {
-    return this.registrationServiceInterface.uploadProfilePic(registration);
-  }
+  
 
 }
