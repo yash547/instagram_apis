@@ -52,14 +52,10 @@ public class RegistrationController {
     return registrationServiceInterface.forgotPassword(registration);
   }
 
-<<<<<<< HEAD
   @PostMapping("/uploadProfilePic")
   public String uploadProfilePic(@RequestParam("file") MultipartFile file, @RequestParam("userId") int userId) throws IOException
   {
     return registrationServiceInterface.uploadProfilePic(file, userId);
   }
-=======
-  
->>>>>>> origin/master
 
 }
