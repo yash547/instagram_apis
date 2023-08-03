@@ -100,4 +100,6 @@ public class Registration {
     public void setprofile_pic(String profile_pic) {
         this.profile_pic = profile_pic;
     }
+
+    
 }

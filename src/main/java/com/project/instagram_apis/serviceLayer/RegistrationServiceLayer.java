@@ -1,9 +1,14 @@
 package com.project.instagram_apis.serviceLayer;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.Optional;
+
+import javax.imageio.IIOException;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.project.instagram_apis.model.Registration;
 import com.project.instagram_apis.repository.RegistrationRepository;
@@ -14,6 +19,7 @@ public class RegistrationServiceLayer implements RegistrationServiceInterface {
 
     @Autowired
 private RegistrationRepository registrationRepository; //  here the object will be created.
+    private String uploadPath;
     /**
      * Method defined
      */
@@ -84,9 +90,40 @@ private RegistrationRepository registrationRepository; //  here the object will 
     }
 
     @Override
-    public Object uploadProfilePic(Registration registration) {
+    public String uploadProfilePic(MultipartFile file, int userId) throws IOException {
+        try{
+            //Save the profile picture to the server
+            String uploadPath = "d://ProfilePic";
+            String fileName = System.currentTimeMillis()+"_"+file.getOriginalFilename();
+            
+            File dest = new File(uploadPath + File.separator + fileName);
+            file.transferTo(dest);
+            
+            //Generate Image URL
+            String imageUrl = "http://your_server_url/uploads/" + fileName;
+
+            //Update the registration table with the image URL for the respective user 
+            Optional<Registration> reg = registrationRepository.findById(userId);
+            Registration registration = reg.get();
+
+            if (reg.isPresent())
+            {
+                registration.setprofile_pic(imageUrl);
+                registrationRepository.save(registration);
+                return imageUrl;
+            }
+            else
+            {
+                throw new IllegalArgumentException("User not found with Id: " + userId);
+            }
+        }
+
+        catch(IOException e){
+            throw new IOException("Failed to upload the Profile Picture.", e);
+
+        }
         
-        return registrationRepository.save(registration);
     }
+
     
 }
