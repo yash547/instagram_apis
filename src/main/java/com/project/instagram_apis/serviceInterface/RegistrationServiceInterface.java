@@ -1,5 +1,9 @@
 package com.project.instagram_apis.serviceInterface;
 
+import java.io.IOException;
+
+import org.springframework.web.multipart.MultipartFile;
+
 import com.project.instagram_apis.model.Registration;
 
 public interface RegistrationServiceInterface {
@@ -11,5 +15,7 @@ public interface RegistrationServiceInterface {
  public Object updateRegistrationData(Registration registration);
 
  public Object forgotPassword(Registration registration);
+
+ String uploadProfilePic(MultipartFile file, int userId) throws IOException;
 
 }

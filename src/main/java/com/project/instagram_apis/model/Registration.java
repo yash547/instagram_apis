@@ -23,6 +23,8 @@ public class Registration {
     private String full_name;
       @Column(name = "mobile_no")
     private String mobile_no;
+      @Column(name = "profile_pic")
+    private String profile_pic;
 
     // default constructor
 
@@ -31,13 +33,14 @@ public class Registration {
 
     // parametrize constructor
 
-    public Registration(int id, String username, String email_id, String password, String full_name, String mobile_no) {
+    public Registration(int id, String username, String email_id, String password, String full_name, String mobile_no, String profile_pic) {
         this.id = id;
         this.username = username;
         this.email_id = email_id;
         this.password = password;
         this.full_name = full_name;
         this.mobile_no = mobile_no;
+        this.profile_pic = profile_pic;
     }
 
     // setter and getter
@@ -90,4 +93,13 @@ public class Registration {
         this.mobile_no = mobile_no;
     }
 
+    public String getprofile_pic() {
+        return profile_pic;
+    }
+
+    public void setprofile_pic(String profile_pic) {
+        this.profile_pic = profile_pic;
+    }
+
+    
 }
