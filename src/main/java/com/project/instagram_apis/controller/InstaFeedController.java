@@ -54,6 +54,13 @@ public class InstaFeedController {
 
     }
 
+    @GetMapping("/getReelByUserId")
+    public Object getReelByUserId(@RequestBody InstaFeed instaFeed) {
+
+        return this.instaFeedServiceInterface.getReelByUserId(instaFeed);
+
+    }
+
 
 
 }
