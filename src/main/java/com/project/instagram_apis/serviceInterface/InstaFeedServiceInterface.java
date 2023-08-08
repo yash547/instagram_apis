@@ -19,5 +19,7 @@ public interface InstaFeedServiceInterface {
    public Object updateFeed(InstaFeed instaFeed);
 
    public Object getFeedByUserId(InstaFeed instaFeed);
-   
+
+   public Object getReelByUserId(InstaFeed instaFeed);
+
 }
