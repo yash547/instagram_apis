@@ -1,12 +1,18 @@
 package com.project.instagram_apis.repository;
 
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
-
 import com.project.instagram_apis.model.Registration;
+
+import jakarta.persistence.Tuple;
 
 public interface RegistrationRepository extends JpaRepository<Registration, Integer> {
 
@@ -26,4 +32,11 @@ public interface RegistrationRepository extends JpaRepository<Registration, Inte
     @Query(value = "SELECT * FROM instagram.registration where registration.email_id= :email_id and registration.password= :password", nativeQuery = true)
     public Optional<Registration> fetchLogin(@Param("email_id") String email_id,@Param("password") String password);
 
+   /**
+ * @param userId
+ * @return
+ */
+@Query(value ="SELECT registration.profile_pic FROM instagram.registration where registration.id= :userId", nativeQuery = true)
+    public List<Tuple> fetchProfilePicByUserId(@Param("userId") int userId);
+       
 }
