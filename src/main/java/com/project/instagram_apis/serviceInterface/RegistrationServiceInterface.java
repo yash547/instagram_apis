@@ -18,4 +18,6 @@ public interface RegistrationServiceInterface {
 
  String uploadProfilePic(MultipartFile file, int userId) throws IOException;
 
+ public Object getProfilePicbyUserId(int id);
+
 }

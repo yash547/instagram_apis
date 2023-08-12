@@ -58,4 +58,10 @@ public class RegistrationController {
     return registrationServiceInterface.uploadProfilePic(file, userId);
   }
 
+  @GetMapping("/getProfilePicbyUserId")
+  public Object getProfilePicbyUserId(@RequestParam("id") String id)
+  {
+    return this.registrationServiceInterface.getProfilePicbyUserId(Integer.parseInt(id));
+  }
+
 }

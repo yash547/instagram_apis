@@ -2,17 +2,28 @@ package com.project.instagram_apis.serviceLayer;
 
 import java.io.File;
 import java.io.IOException;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 import javax.imageio.IIOException;
 
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.amqp.RabbitProperties.Cache.Connection;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.project.instagram_apis.model.Registration;
 import com.project.instagram_apis.repository.RegistrationRepository;
 import com.project.instagram_apis.serviceInterface.RegistrationServiceInterface;
+
+import jakarta.persistence.Tuple;
 
 @Service
 public class RegistrationServiceLayer implements RegistrationServiceInterface {
@@ -125,5 +136,20 @@ private RegistrationRepository registrationRepository; //  here the object will 
         
     }
 
-    
+    @Override
+    public Object getProfilePicbyUserId(int id){
+      
+        JSONObject json = new JSONObject();
+        List<Tuple> profileData=registrationRepository.fetchProfilePicByUserId(id);
+
+        for(Tuple tuples:profileData)
+        {
+
+        json.put("ProfileUrl", tuples.get(0,String.class));
+        }
+        
+        return new ResponseEntity<>(json.toString(), HttpStatus.OK);
+    } 
 }
+   
+
